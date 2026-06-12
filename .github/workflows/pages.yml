@@ -33,3 +33,15 @@ jobs:
           path: frontend
       - id: deployment
         uses: actions/deploy-pages@v4
+
+  notify-index:
+    needs: deploy
+    runs-on: ubuntu-latest
+    steps:
+      - name: Trigger tinycrops-index regeneration
+        run: |
+          gh api repos/tinycrops/tinycrops-index/dispatches \
+            -f event_type=site-published \
+            -f client_payload[repo]=personality-compressor
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
