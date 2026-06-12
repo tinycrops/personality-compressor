@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>How Many Bits Is a Person? — the personality-compressor program</title>
+<style>
+  :root{
+    --bg:#0e0f13; --panel:#14161c; --line:#2a2d34;
+    --ink:#e8e4d8; --sub:#9a958a; --amber:#ffb000; --amber2:#ffd37a;
+    --teal:#27c4c4; --grey:#6a6f78; --red:#e06a5a;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--ink);
+       font-family:Georgia,'DejaVu Serif',serif;line-height:1.55}
+  .wrap{max-width:980px;margin:0 auto;padding:48px 28px 80px}
+  h1{font-size:2.5rem;letter-spacing:.04em;margin:0 0 6px}
+  h1 .q{color:var(--amber)}
+  .kicker{color:var(--sub);font-style:italic;margin-bottom:4px}
+  .date{color:var(--grey);font-size:.85rem}
+  h2{font-size:1.25rem;letter-spacing:.12em;text-transform:uppercase;
+     color:var(--amber);margin:64px 0 8px;border-bottom:1px solid var(--line);
+     padding-bottom:8px;font-weight:normal}
+  h3{font-size:1.02rem;color:var(--ink);margin:0 0 4px}
+  p{color:var(--ink)}
+  .sub{color:var(--sub)}
+  .verdict{background:var(--panel);border-left:3px solid var(--amber);
+           padding:18px 22px;margin:28px 0;font-size:1.12rem}
+  .verdict b{color:var(--amber)}
+  .grid{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+  @media(max-width:760px){.grid{grid-template-columns:1fr}}
+  .card{background:var(--panel);border:1px solid var(--line);border-radius:6px;
+        padding:18px 20px 14px}
+  .card .tag{font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;
+        padding:2px 8px;border-radius:3px;display:inline-block;margin-bottom:8px}
+  .tag.pos{background:rgba(255,176,0,.12);color:var(--amber)}
+  .tag.null{background:rgba(106,111,120,.18);color:var(--sub)}
+  .tag.mixed{background:rgba(39,196,196,.12);color:var(--teal)}
+  .num{font-size:1.9rem;color:var(--amber);font-weight:bold;line-height:1.1}
+  .num small{font-size:.85rem;color:var(--sub);font-weight:normal}
+  .card p{font-size:.92rem;color:var(--sub);margin:8px 0 0}
+  .card p b{color:var(--ink)}
+  svg text{font-family:Georgia,serif}
+  .figrow{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:18px}
+  @media(max-width:760px){.figrow{grid-template-columns:1fr}}
+  .figrow figure,figure.wide{margin:0;background:var(--panel);
+        border:1px solid var(--line);border-radius:6px;padding:10px}
+  figure img{width:100%;border-radius:3px;display:block}
+  figcaption{font-size:.82rem;color:var(--sub);padding:8px 4px 2px;font-style:italic}
+  .ladder{margin:18px 0}
+  .lrow{display:flex;align-items:center;gap:12px;margin:7px 0}
+  .lname{width:215px;text-align:right;color:var(--sub);font-size:.92rem;flex-shrink:0}
+  .lbarbox{flex:1;background:#1a1c22;border-radius:3px;height:22px;position:relative}
+  .lbar{height:100%;border-radius:3px}
+  .lval{position:absolute;right:8px;top:1px;font-size:.82rem;color:var(--ink)}
+  .future li{margin:14px 0;color:var(--sub)}
+  .future b{color:var(--ink)}
+  .future .why{color:var(--amber);font-style:italic}
+  table{border-collapse:collapse;width:100%;font-size:.9rem;margin:14px 0}
+  th,td{border-bottom:1px solid var(--line);padding:7px 10px;text-align:left}
+  th{color:var(--sub);font-weight:normal;font-style:italic}
+  td.hot{color:var(--amber);font-weight:bold}
+  .foot{margin-top:70px;border-top:1px solid var(--line);padding-top:16px;
+        color:var(--grey);font-size:.82rem;font-style:italic}
+  a{color:var(--teal)}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<p class="kicker">the personality-compressor program · measured results &amp; the road ahead</p>
+<h1>HOW MANY BITS IS A PERSON<span class="q">?</span></h1>
+<p class="date">KuaiRand (22,940–26,878 real users) · Blog Authorship (1,200 authors) · GSM8K · OPSD arXiv 2601.18734 · June 2026</p>
+
+<div class="verdict">
+  Personality is a <b>small (~4–16 bit), roughly 2-dimensional, privileged handle</b>
+  that lives in <b>self-expression</b>, must be <i>carried</i> (it cannot be re-derived
+  by more compute), transfers across content domains nearly losslessly, and
+  <b>generates preference</b> — serving from it beats a popularity recommender by +20%.
+  Real and useful; not magic.
+</div>
+
+<!-- ============================ SUBSTRATE ============================ -->
+<h2>1 · Where personality lives — the substrate ladder</h2>
+<p class="sub">Cross-context identity-AUC: build a persona from half of someone's record, ask if it picks out their <i>held-out</i> record over other people's. Same protocol on every substrate.</p>
+<div class="ladder">
+  <div class="lrow"><div class="lname">nerve video monologue</div><div class="lbarbox"><div class="lbar" style="width:96%;background:var(--amber)"></div><span class="lval">0.98</span></div></div>
+  <div class="lrow"><div class="lname">blog self-expression</div><div class="lbarbox"><div class="lbar" style="width:68.5%;background:var(--amber2)"></div><span class="lval">0.83</span></div></div>
+  <div class="lrow"><div class="lname">discord chat</div><div class="lbarbox"><div class="lbar" style="width:11.6%;background:var(--teal)"></div><span class="lval">0.56</span></div></div>
+  <div class="lrow"><div class="lname">passive watch (KuaiRec)</div><div class="lbarbox"><div class="lbar" style="width:1%;background:var(--grey)"></div><span class="lval">0.50 — zero taste interaction</span></div></div>
+</div>
+<p class="sub">The more deliberately someone <i>expresses</i>, the fatter the handle: one blog post already identifies its author at 0.73 AUC; shuffle control collapses to 0.497. Passive consumption is nearly pure popularity — explicit engagement (KuaiRand) restores a thin personal signal.</p>
+
+<!-- ============================ TAXONOMY ============================ -->
+<h2>2 · What kind of information personality is</h2>
+<p class="sub">We implemented OPSD (on-policy self-distillation: one model, a teacher role that sees privileged info, per-token JSD on student rollouts) and used it as an instrument to classify the privilege.</p>
+<table>
+  <tr><th>privileged info</th><th>type</th><th>OPSD outcome</th><th>meaning</th></tr>
+  <tr><td>a verified math solution</td><td>re-derivable</td><td class="hot">amortizes — student improves (OPSD &gt; SFT)</td><td>compute can replace the hint</td></tr>
+  <tr><td>a personality / history</td><td>identifying (exogenous)</td><td class="hot">never amortizes — transfer ≤ floor at every model size</td><td>no amount of capacity re-derives <i>who you are</i>; the handle must be carried</td></tr>
+</table>
+<p class="sub">This is the session's central distinction: math hints are <i>shortcuts to something already implied by the question</i>; personality is <i>new information about the world</i>. The TPU scale sweep confirmed capacity doesn't change the verdict — but the handle that must be carried turns out to be tiny:</p>
+
+<!-- ============================ EFFICIENCY ============================ -->
+<h2>3 · The efficiency techniques that fell out (a → c)</h2>
+
+<div class="grid">
+  <div class="card">
+    <span class="tag pos">measured · positive</span>
+    <h3>(0) The manifold is a sample-efficiency prior</h3>
+    <div class="num">8× <small>fewer cold-start labels</small></div>
+    <svg viewBox="0 0 380 150" width="100%">
+      <!-- axes: N=3,5,10,20,40,80 log-x mapped to 30..360 ; AUC .60...745 -> 130..14 -->
+      <line x1="30" y1="132" x2="362" y2="132" stroke="#2a2d34"/>
+      <line x1="30" y1="132" x2="30" y2="10" stroke="#2a2d34"/>
+      <!-- POP -->
+      <polyline fill="none" stroke="#6a6f78" stroke-width="1.4" points="30,127 64,127 134,127 204,127 274,127 344,126"/>
+      <!-- FREE -->
+      <polyline fill="none" stroke="#27c4c4" stroke-width="1.8" points="30,118 64,113 134,103 204,87 274,69 344,50"/>
+      <!-- MAN2 -->
+      <polyline fill="none" stroke="#ffb000" stroke-width="2.6" points="30,97 64,84 134,63 204,45 274,31 344,23"/>
+      <!-- 8x annotation: MAN2@5 (64,84) == FREE@40 (274,69~84 target) -->
+      <line x1="64" y1="84" x2="274" y2="84" stroke="#ffb000" stroke-dasharray="4 3" stroke-width="1" opacity=".6"/>
+      <text x="166" y="78" fill="#ffb000" font-size="11" text-anchor="middle" font-style="italic">5 events ≙ 40 events</text>
+      <text x="348" y="22" fill="#ffb000" font-size="10">on-manifold k=2</text>
+      <text x="348" y="50" fill="#27c4c4" font-size="10">free 60-d</text>
+      <text x="348" y="123" fill="#6a6f78" font-size="10">popularity</text>
+      <text x="30" y="146" fill="#9a958a" font-size="9">3</text><text x="64" y="146" fill="#9a958a" font-size="9">5</text><text x="134" y="146" fill="#9a958a" font-size="9">10</text><text x="204" y="146" fill="#9a958a" font-size="9">20</text><text x="274" y="146" fill="#9a958a" font-size="9">40</text><text x="344" y="146" fill="#9a958a" font-size="9">80</text>
+      <text x="196" y="146" fill="#62605a" font-size="9" text-anchor="end" dx="180"> </text>
+    </svg>
+    <p>Constrain a newcomer to the learned 2-D taste manifold and <b>5 interactions place them as well as 40</b> place a free 60-parameter model (AUC .659). Lower k wins the cold start: MAN2 &gt; MAN4 &gt; MAN8 &gt; MAN16 &gt; FREE.</p>
+  </div>
+
+  <div class="card">
+    <span class="tag null">measured · null (sharpening)</span>
+    <h3>Active elicitation does <i>not</i> help</h3>
+    <div class="num">.641 <small>vs</small> .645 <small>active vs random, N=3</small></div>
+    <p>Choosing <b>which</b> interactions to observe (label-free D-optimal design on the coordinate) is no better than random — slightly worse. The manifold is so low-dim that ~3 <i>incidental</i> signals already saturate localization. <b>The win is the constraint, not the selection</b> — a stronger deployment story: no elicitation UX needed, the prior works on whatever a new user happens to do.</p>
+  </div>
+
+  <div class="card">
+    <span class="tag mixed">measured · robust, with a ceiling</span>
+    <h3>(a) Survives a real sequence model — but isn't the ceiling</h3>
+    <div class="num">2 numbers <small>within ~.02 AUC of a GRU</small></div>
+    <svg viewBox="0 0 380 130" width="100%">
+      <line x1="30" y1="112" x2="362" y2="112" stroke="#2a2d34"/>
+      <!-- FREE .617..701 ; MAN2 .645..734 ; GRU .677..746 ; map .60->112 .75->10 -->
+      <polyline fill="none" stroke="#27c4c4" stroke-width="1.6" points="30,100 64,96 134,87 204,75 274,59 344,43"/>
+      <polyline fill="none" stroke="#ffb000" stroke-width="2.4" points="30,81 64,70 134,54 204,38 274,27 344,21"/>
+      <polyline fill="none" stroke="#e8e4d8" stroke-width="1.6" stroke-dasharray="5 3" points="30,59 64,47 134,34 204,23 274,17 344,12"/>
+      <text x="348" y="12" fill="#e8e4d8" font-size="10">GRU (in-context)</text>
+      <text x="348" y="24" fill="#ffb000" font-size="10">manifold k=2</text>
+      <text x="348" y="44" fill="#27c4c4" font-size="10">free 60-d</text>
+      <text x="30" y="126" fill="#9a958a" font-size="9">N=3</text><text x="344" y="126" fill="#9a958a" font-size="9">N=80</text>
+    </svg>
+    <p>The prior beats its matched baseline at every N (not an artifact), but an in-context GRU wins overall (+.03 at N=3): <b>order/context carries person-signal the bag-of-tags throws away</b>. Striking consolation: a 2-parameter model lands within ~.01–.03 of a full neural net — most recoverable person-signal really is low-dimensional.</p>
+  </div>
+
+  <div class="card">
+    <span class="tag pos">measured · positive</span>
+    <h3>(b) The coordinate transfers across content domains</h3>
+    <div class="num">transfer ≈ native <small>(within .01 AUC)</small></div>
+    <svg viewBox="0 0 380 130" width="100%">
+      <line x1="30" y1="112" x2="362" y2="112" stroke="#2a2d34"/>
+      <!-- N=5,10,20,40 at x=40,140,240,340 ; AUC .61...74 -> 108..12 -->
+      <polyline fill="none" stroke="#6a6f78" stroke-width="1.4" points="40,105 140,105 240,105 340,105"/>
+      <polyline fill="none" stroke="#e8e4d8" stroke-width="1.6" stroke-dasharray="5 3" points="40,59 140,42 240,27 340,27"/>
+      <polyline fill="none" stroke="#ffb000" stroke-width="2.4" points="40,67 140,50 240,34 340,19"/>
+      <text x="345" y="18" fill="#ffb000" font-size="10">from domain A</text>
+      <text x="345" y="33" fill="#e8e4d8" font-size="10">native B</text>
+      <text x="345" y="102" fill="#6a6f78" font-size="10">popularity</text>
+      <text x="40" y="126" fill="#9a958a" font-size="9">N=5</text><text x="340" y="126" fill="#9a958a" font-size="9">N=40</text>
+    </svg>
+    <p>Infer <i>who you are</i> from one half of content-space (tags 0–29), predict what you'll like in the disjoint other half: <b>as accurate as watching you there directly</b> (.711 vs .720 at N=20; transfer even edges native at N=40). +0.097 AUC over popularity. Identity is a <b>reusable substrate</b>, not a per-domain fit.</p>
+  </div>
+</div>
+
+<div class="card" style="margin-top:18px">
+  <span class="tag pos">measured · positive — the engine</span>
+  <h3>(c) The generative dual: persona point → predicted enjoyment</h3>
+  <div style="display:flex;gap:36px;flex-wrap:wrap;align-items:end">
+    <div><div class="num">+20%<small> vs popularity recommender</small></div></div>
+    <div><div class="num">+51%<small> vs serving anything</small></div></div>
+    <div style="flex:1;min-width:240px">
+      <svg viewBox="0 0 320 110" width="100%">
+        <!-- bars: base .314, pop .395, me .473 ; scale .0->100 .5->6 -->
+        <rect x="20"  y="41" width="70" height="59" fill="#3a3d44"/>
+        <rect x="120" y="26" width="70" height="74" fill="#6a6f78"/>
+        <rect x="220" y="11" width="70" height="89" fill="#ffb000"/>
+        <text x="55"  y="36" fill="#9a958a" font-size="10" text-anchor="middle">.314</text>
+        <text x="155" y="21" fill="#c8c4ba" font-size="10" text-anchor="middle">.395</text>
+        <text x="255" y="6"  fill="#ffb000" font-size="11" text-anchor="middle" font-weight="bold">.473</text>
+        <text x="55"  y="108" fill="#9a958a" font-size="8.5" text-anchor="middle">any content</text>
+        <text x="155" y="108" fill="#9a958a" font-size="8.5" text-anchor="middle">popularity top-10</text>
+        <text x="255" y="108" fill="#9a958a" font-size="8.5" text-anchor="middle">persona top-10</text>
+      </svg>
+    </div>
+  </div>
+  <p>Invert the map: from 20 interactions, infer the persona coordinate, <b>generate the full predicted-preference profile over all content</b>, serve the top of it. Held-out engagement on served content: 0.473 vs 0.395 (popularity) vs 0.314 (baseline). Stable across K=5/10/15. <b>This is the discovery engine</b> — swap anonymized tags for real content embeddings and it predicts what a specific person will enjoy.</p>
+</div>
+
+<!-- ============================ THROUGH-LINE ============================ -->
+<h2>4 · The through-line</h2>
+<div class="verdict" style="border-left-color:var(--teal)">
+  Every independent measurement collapsed onto the <b style="color:var(--teal)">same ~2-dimensional coordinate</b>:
+  cold-start (k=2 beats k=4,8,16), transfer (TRANS2 ≈ TRANS8), generation (k=4 suffices),
+  the blog compression curve (saturates by k≈8), and the singular spectrum (one dominant
+  axis, 210 vs a flat ~60–79 tail). That convergence — not any single result — is what
+  “personality is a super-compressor” looks like when it's true.
+</div>
+
+<!-- ============================ GALLERY ============================ -->
+<h2>5 · The atlas — what the manifold looks like</h2>
+<div class="figrow">
+  <figure><img src="opsd/the_prior_that_pays.png" alt="The prior that pays"><figcaption>The prior that pays — efficiency curves + the one-axis spectrum.</figcaption></figure>
+  <figure><img src="opsd/what_youd_enjoy.png" alt="What you'd enjoy, from who you are"><figcaption>The generative dual — four archetypal persona points, four generated content menus.</figcaption></figure>
+  <figure><img src="opsd/atlas_of_taste.png" alt="An atlas of taste"><figcaption>26,878 real people on the first two taste axes; neighbours are alike, the field morphs smoothly.</figcaption></figure>
+  <figure><img src="opsd/walk_through_taste.gif" alt="A walk through taste-space"><figcaption>A closed walk through six real people — the manifold invents the people in between.</figcaption></figure>
+</div>
+
+<!-- ============================ FUTURE ============================ -->
+<h2>6 · Future direction</h2>
+<ol class="future">
+  <li><b>Cross-modality transfer — the missing bridge.</b> (b) proved transfer across content <i>categories</i>; the unproven, highest-value claim is across <i>modalities</i>: persona from blog/monologue self-expression (the fat 0.83–0.98 handle) → consumption cold-start. Needs a learned bridge between the bge-m3 text space and the content space. <span class="why">If it holds, a few paragraphs of writing replaces weeks of watch history.</span></li>
+  <li><b>Manifold-constrained bottleneck inside the strong model.</b> (a) showed the GRU wins alone; the open question is whether forcing its person-summary <i>through</i> the 2-D manifold helps it at cold start — does the topology prior improve a strong learner, or only rescue weak ones? <span class="why">Decides whether this is a deployment trick or a general regularizer.</span></li>
+  <li><b>The discovery engine, on real content.</b> (c) with content embeddings in place of anonymized tags: persona point → generated preference field → serve GIFs/videos a specific person will enjoy. The nerve corpus is the natural first user. <span class="why">The product the whole program points at.</span></li>
+  <li><b>Dynamics on the manifold.</b> Everything so far treats the coordinate as static. Do people <i>move</i>? Slow drift vs. fast mood, trajectories as the next compression target. <span class="why">A person may be 2 numbers plus a velocity.</span></li>
+</ol>
+
+<div class="foot">
+  All numbers measured locally or on Kaggle (T4/TPU-v5e), June 2026 · scripts: <span style="color:var(--sub)">manifold_efficiency.py · manifold_active.py · a_seqmodel.py · b_transfer.py · c_generative.py · blog_headroom.py · kopsd*.py · ktpu_persona_scale.py</span> · OPSD: arXiv 2601.18734 · the starburst fingerprints, atlas, and walk are original visualizations of real user data.
+</div>
+
+</div>
+</body>
+</html>
