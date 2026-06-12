@@ -68,9 +68,9 @@
 <body>
 <div class="wrap">
 
-<p class="kicker">the personality-compressor program · measured results &amp; the road ahead</p>
+<p class="kicker">the personality-compressor program · measured results — in people, and in food</p>
 <h1>HOW MANY BITS IS A PERSON<span class="q">?</span></h1>
-<p class="date">KuaiRand (22,940–26,878 real users) · Blog Authorship (1,200 authors) · GSM8K · OPSD arXiv 2601.18734 · June 2026</p>
+<p class="date">KuaiRand (22,940–26,878 users) · Blog Authorship (1,200 authors) · Epicure food embeddings · FAOSTAT (167 nations) · World Bank · Hofstede · GSM8K · OPSD arXiv 2601.18734 · June 2026</p>
 
 <div class="verdict">
   Personality is a <b>small (~4–16 bit), roughly 2-dimensional, privileged handle</b>
@@ -218,17 +218,60 @@
   <figure><img src="opsd/walk_through_taste.gif" alt="A walk through taste-space"><figcaption>A closed walk through six real people — the manifold invents the people in between.</figcaption></figure>
 </div>
 
+<!-- ============================ PART II : FOOD ============================ -->
+<h2 style="margin-top:84px;border-bottom:2px solid var(--amber)">Part II · the same shape, in food</h2>
+<p class="sub">If this structure — a low-dimensional manifold separating a <i>derivable</i> behavioral channel from an <i>exogenous</i>, must-be-carried identity channel — is a real law and not a quirk of personality data, it should appear in other domains. Food is the cleanest place to look. <a href="https://arxiv.org/abs/2605.22391">Epicure</a> independently trained three sibling ingredient embeddings (1,790 foods) that differ only in what they see — recipe co-occurrence (<i>what's cooked together</i> = behavior) or shared flavor chemistry (<i>what shares aroma compounds</i> = grounding) — and rediscovered the entire stack: a low-dim manifold, linear taste directions, emergent culinary modes, and cuisine self-organizing with no supervision.</p>
+
+<h2>6 · Flavor chemistry is an exogenous channel</h2>
+<div class="grid">
+  <div class="card">
+    <span class="tag pos">measured · positive</span>
+    <h3>Chemistry is not re-derivable from what's cooked together</h3>
+    <div class="num">~83%<small> of flavor chemistry is exogenous to recipe co-occurrence</small></div>
+    <p>A label-free ridge map between the sibling embeddings: co-occurrence geometry explains only <b>R²=0.17</b> of chemistry geometry (chance floor −0.02), and it saturates there at every rank. <b>Chemistry is to recipe co-occurrence as identity is to behavior</b> — a privileged channel the behavioral one cannot reconstruct. The controlled experiment personality could only gesture at, food made measurable: Epicure ships a co-occurrence-only and a chemistry-only embedding, trained identically.</p>
+  </div>
+  <figure style="margin:0;align-self:center"><img src="food/exogenous_channel.png" alt="Flavor chemistry is exogenous"><figcaption>Re-derivability across the food stack — co-occurrence cannot reach chemistry at any rank.</figcaption></figure>
+</div>
+
+<!-- ============================ PART III : SOCIOLOGY ============================ -->
+<h2>7 · What a nation eats predicts who they are</h2>
+<p class="sub">The predictive turn: is there hidden, low-dimensional structure in what a <i>society</i> eats that predicts observable sociology? National food-supply vectors (FAOSTAT, 167 countries × 116 commodities, kg/capita/yr) against World Bank and cultural indicators.</p>
+<div class="grid">
+  <div class="card">
+    <span class="tag pos">measured · positive</span>
+    <h3>Two diet numbers ≈ a nation's development</h3>
+    <div class="num">R² 0.78<small> &nbsp;GDP/capita from just 2 diet axes (full plate 0.86)</small></div>
+    <p>A 2-D diet manifold predicts <b>GDP/capita R²=0.78, child mortality 0.79, life expectancy 0.65</b>; four axes classify world region at <b>71%</b> (baseline 28%). Its first axis is a pure development gradient with zero economic input — meat·dairy·eggs at one pole, cassava·rice·palm-oil·millet at the other. The predictive content is genuinely ~2-dimensional.</p>
+  </div>
+  <div class="card">
+    <span class="tag mixed">measured · the nuance</span>
+    <h3>Food carries heritage, not circumstance</h3>
+    <div class="num">+0.39<small> &nbsp;R² for long-term orientation, beyond what wealth explains</small></div>
+    <p>Controlling for GDP separates two things inside food. Health/development signals are largely a <i>wealth proxy</i> — strip wealth and they vanish. But the <b>civilizational heritage axes survive</b>: diet predicts Hofstede long-term orientation at <b>+0.39</b> and indulgence at <b>+0.16</b> beyond wealth, while wealth-coupled traits (individualism, happiness) and "masculine" dims (masculinity, freedom, corruption) carry no food signal. The East-Asian thrift cluster falls out of a single diet axis on its own.</p>
+  </div>
+</div>
+<div class="figrow">
+  <figure><img src="food/diet_predicts_sociology.png" alt="Diet predicts sociology"><figcaption>167 nations on the diet manifold, coloured by an economic variable it never saw; 2 axes ≈ the whole plate.</figcaption></figure>
+  <figure><img src="food/food_carries_heritage.png" alt="Food carries heritage"><figcaption>What diet knows that GDP doesn't — the heritage axes (long-term orientation, indulgence), wealth-independent.</figcaption></figure>
+</div>
+
+<div class="verdict" style="border-left-color:var(--amber)">
+  Across people and food, the same shape: a <b>low-dimensional manifold</b> that separates a <b>circumstance / behavior axis</b> (watch history, recipe co-occurrence, national wealth) from an <b>exogenous identity channel</b> (who you are, flavor chemistry, cultural heritage) that <b>must be carried, never re-derived</b>. The compressor isn't about personality specifically — it's about how meaning is organized.
+</div>
+
 <!-- ============================ FUTURE ============================ -->
-<h2>6 · Future direction</h2>
+<h2>8 · Future direction</h2>
 <ol class="future">
   <li><b>Cross-modality transfer — the missing bridge.</b> (b) proved transfer across content <i>categories</i>; the unproven, highest-value claim is across <i>modalities</i>: persona from blog/monologue self-expression (the fat 0.83–0.98 handle) → consumption cold-start. Needs a learned bridge between the bge-m3 text space and the content space. <span class="why">If it holds, a few paragraphs of writing replaces weeks of watch history.</span></li>
   <li><b>Manifold-constrained bottleneck inside the strong model.</b> (a) showed the GRU wins alone; the open question is whether forcing its person-summary <i>through</i> the 2-D manifold helps it at cold start — does the topology prior improve a strong learner, or only rescue weak ones? <span class="why">Decides whether this is a deployment trick or a general regularizer.</span></li>
   <li><b>The discovery engine, on real content.</b> (c) with content embeddings in place of anonymized tags: persona point → generated preference field → serve GIFs/videos a specific person will enjoy. The nerve corpus is the natural first user. <span class="why">The product the whole program points at.</span></li>
   <li><b>Dynamics on the manifold.</b> Everything so far treats the coordinate as static. Do people <i>move</i>? Slow drift vs. fast mood, trajectories as the next compression target. <span class="why">A person may be 2 numbers plus a velocity.</span></li>
+  <li><b>Food in time — separating heritage from circumstance.</b> FAOSTAT runs back to 1961. Does a nation's <i>diet shift</i> lead its development and culture shifts, or does the heritage axis stay fixed while wealth moves? <span class="why">A panel design separates the slow identity channel from the fast circumstance one, directly, in time.</span></li>
+  <li><b>The bridge that joins both halves.</b> The food and personality manifolds share a shape but no data linking an individual to <i>both</i> their diet and their identity. Person-level diet + preference data would close the loop — back to the original question of who will enjoy what. <span class="why">"You get to know people by eating meals with them," made measurable.</span></li>
 </ol>
 
 <div class="foot">
-  All numbers measured locally or on Kaggle (T4/TPU-v5e), June 2026 · scripts: <span style="color:var(--sub)">manifold_efficiency.py · manifold_active.py · a_seqmodel.py · b_transfer.py · c_generative.py · blog_headroom.py · kopsd*.py · ktpu_persona_scale.py</span> · OPSD: arXiv 2601.18734 · the starburst fingerprints, atlas, and walk are original visualizations of real user data.
+  All numbers measured locally or on Kaggle (T4/TPU-v5e), June 2026 · personality scripts: <span style="color:var(--sub)">manifold_efficiency.py · manifold_active.py · a_seqmodel.py · b_transfer.py · c_generative.py · blog_headroom.py</span> · food scripts: <span style="color:var(--sub)">food_rederive.py · food_sociology.py · food_culture.py</span> · sources: OPSD arXiv 2601.18734 · Epicure arXiv 2605.22391 (CC-BY-4.0) · FAOSTAT Food Balance Sheets · World Bank · Hofstede · all figures are original visualizations of real public data.
 </div>
 
 </div>
